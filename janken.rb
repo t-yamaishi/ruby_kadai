@@ -6,15 +6,15 @@ class Player
     puts "0:グー, 1:チョキ, 2:パー"
     # 変数「input_hand」にプレイヤーの入力値を代入します。
     # ヒント：getsメソッドについて調べてみましょう。
-    input_hand = gets.to_i
+    input_hand = gets.chomp
     # 「input_hand」が「0, 1, 2」のいずれかだと繰り返し処理を終了し、それ以外（アルファベットも含む）だと繰り返し処理を継続します。
     while true
-      if [0, 1, 2].include?(input_hand)
+      if ["0", "1", "2"].include?(input_hand)
         return input_hand
       else
         puts "0〜2の数字を入力してください。"
         puts "0:グー, 1:チョキ, 2:パー"
-        input_hand = gets.to_i
+        input_hand = gets.chomp
       end
       # if 「input_hand」が「0, 1, 2」のいずれかの場合だった場合
       # ヒント：include?メソッドについて調べてみましょう。
@@ -45,19 +45,19 @@ class Janken
     #「相手の手は#{相手の手}です。」と出力させます。
     puts "相手の手は#{janken[enemy_hand]}です。"
     # Playerクラスの戻り値とEnemyクラスの戻り値からじゃんけんするロジックを作成します。
-    if input_hand[player_hand] ==  janken[enemy_hand]
+    if input_hand[player_hand.to_i] ==  janken[enemy_hand]
       # Playerクラスの戻り値(player_hand)とEnemyクラスの戻り値(enemy_hand)の値が同じだった場合
       # 「あいこ」を出力します。
       puts "あいこ"
       #「true」を返してじゃんけんを繰り返し実行させます。
       # ヒント：「return」を使って戻り値を返すことができます。しかし、Rubyでは戻り値を返す場合、「return」を省略するのが一般的です。
-    elsif (player_hand == 0 && enemy_hand == 1) || (player_hand == 1 && enemy_hand == 2) || (player_hand == 2 && enemy_hand == 0)
+    elsif (player_hand.to_i == 0 && enemy_hand == 1) || (player_hand.to_i == 1 && enemy_hand == 2) || (player_hand.to_i == 2 && enemy_hand == 0)
       puts "あなたの勝ちです"
       # もしも下記の組み合わせだった場合
       # (player_hand == 0 && enemy_hand == 1) || (player_hand == 1 && enemy_hand == 2) || (player_hand == 2 && enemy_hand == 0)
       #「あなたの勝ちです」を出力します。
       #「false」を返してじゃんけんを終了させます。
-    else (player_hand == 0 && enemy_hand == 2) || (player_hand == 1 && enemy_hand == 0) || (player_hand == 2 && enemy_hand == 1)
+    else (player_hand.to_i == 0 && enemy_hand == 2) || (player_hand.to_i == 1 && enemy_hand == 0) || (player_hand.to_i == 2 && enemy_hand == 1)
       puts "あなたの負けです"
       #「あなたの負けです」を出力します。
       #「false」を返してじゃんけんを終了させます。
